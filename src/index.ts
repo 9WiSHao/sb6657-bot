@@ -1,7 +1,18 @@
 import { Context, Schema } from 'koishi';
-import '@koishijs/plugin-rate-limit';
 
-export const name = 'search-meme';
+declare module 'koishi' {
+    interface User {
+        usage: Record<string, number>;
+    }
+    namespace Command {
+        interface Config {
+            minInterval?: number;
+            maxUsage?: number;
+        }
+    }
+}
+
+export const name = 'sb6657-bot';
 
 // ==========================================
 // 1. 定义配置项的 TypeScript 接口 (Interface)
@@ -53,7 +64,7 @@ interface MemeResponse {
 // 4. 插件核心逻辑
 // ==========================================
 export function apply(ctx: Context, config: Config) {
-    const logger = ctx.logger('search-meme');
+    const logger = ctx.logger('sb6657-bot');
     const absoluteMax = config.customLimits.reduce((max, item) => Math.max(max, item.maxUsage), config.defaultMaxUsage);
 
     ctx.command('搜烂梗 <keyword:text>', '根据关键词搜索烂梗', {
