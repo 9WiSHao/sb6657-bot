@@ -1,7 +1,7 @@
 {
     "name": "sb6657-bot",
     "version": "0.1.0",
-    "description": "a QQ bot of sb6657 which can be used in QQ groups",
+    "description": "A Koishi-based QQ bot plugin for sb6657.cn",
     "main": "dist/index.js",
     "types": "dist/index.d.ts",
     "scripts": {
