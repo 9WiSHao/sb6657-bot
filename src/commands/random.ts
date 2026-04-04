@@ -19,7 +19,8 @@ export function useRandomCommand(ctx: Context, config: Config) {
                 logger.error('网络请求炸了:', err);
                 return `随机烂梗 后端接口炸了，请寻求维护者提供帮助。错误信息: ${err}`;
             }
-            return `<at id="${session.userId}"/>\n${flatData.barrage}
+            return `<at id="${session.userId}"/>:
+${flatData.barrage}
 tag: ${getDisplayTags(flatData.tags)
                 .map((t) => t.label)
                 .join(' ')}
