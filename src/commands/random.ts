@@ -19,11 +19,11 @@ export function useRandomCommand(ctx: Context, config: Config) {
                 logger.error('网络请求炸了:', err);
                 return `随机烂梗 后端接口炸了，请寻求维护者提供帮助。错误信息: ${err}`;
             }
-            return `<at id="${session.userId}"/> #${flatData.tags}
-${flatData.barrage}
+            return `<at id="${session.userId}"/>\n${flatData.barrage}
 tag: ${getDisplayTags(flatData.tags)
                 .map((t) => t.label)
                 .join(' ')}
-复制数${flatData.cnt} - 投稿日期${easyFormatTime(flatData.submitTime)}`;
+#${flatData.id} - 复制数${flatData.cnt}
+投稿时间${easyFormatTime(flatData.submitTime)}`;
         });
 }
