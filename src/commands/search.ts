@@ -11,6 +11,7 @@ export function useSearchCommand(ctx: Context, config: Config) {
         maxUsage: absoluteMax,
     })
         .userFields(['usage'])
+        .alias('meme', '搜', 'search')
         .action(async ({ session }, keyword) => {
             if (!keyword || !keyword.trim()) return '请输入搜索关键词';
             if (!session || !session.user) return '无法获取用户信息，请重试';
@@ -26,7 +27,7 @@ export function useSearchCommand(ctx: Context, config: Config) {
             const { flatData, _failure, err } = await searchMemes(ctx, keyword);
             if (_failure) {
                 logger.error('网络请求炸了:', err);
-                return `后端接口炸了，请寻求维护者提供帮助。错误信息: ${err}`;
+                return `搜烂梗 后端接口炸了，请寻求维护者提供帮助。错误信息: ${err}`;
             }
             if (!flatData?.list?.length) {
                 return `关键词「${keyword}」没有找到搜索结果。想要补充更多烂梗？请去sb6657首页投稿！`;

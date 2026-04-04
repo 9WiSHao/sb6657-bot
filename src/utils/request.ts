@@ -41,3 +41,23 @@ export async function post<REQ, RES = any>(ctx: Context, req: Req<REQ>): Promise
     }
     return result;
 }
+export async function get<RES = any>(ctx: Context, url: string): Promise<Res<RES>> {
+    let result: Res<RES> = {
+        flatData: null,
+        err: null,
+        _failure: false,
+    };
+    try {
+        const res = await ctx.http.get<BaseResponse<RES>>(url);
+        if (res.code === 200) {
+            result.flatData = res.data;
+        } else {
+            result._failure = true;
+            result.err = res.msg || `API Error: Code ${res.code}`;
+        }
+    } catch (e: any) {
+        result._failure = true;
+        result.err = e;
+    }
+    return result;
+}

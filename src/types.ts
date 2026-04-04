@@ -1,3 +1,4 @@
+/** 烂梗搜索相关类型 */
 // 0: 按id排序, 1: 按复制次数排序
 export enum SortType {
     ID = 0,
@@ -22,4 +23,14 @@ export interface searchMeme_res {
     total: number;
     list: searchMemeElement[];
     isLastPage: boolean;
+}
+
+/** 随机烂梗相关类型 */
+export interface RandomMeme {
+    tags: string;
+    id: string;
+    barrage: string;
+    cnt: string;
+    likes: string;
+    submitTime: string;
 }

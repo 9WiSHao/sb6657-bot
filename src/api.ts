@@ -1,6 +1,6 @@
 import { Context } from 'koishi';
-import { searchMeme_req, searchMeme_res } from './types';
-import { Res, post } from './utils/request';
+import { searchMeme_req, searchMeme_res, RandomMeme } from './types';
+import { Res, post, get } from './utils/request';
 
 const BACK_END_URL = 'https://hguofichp.cn:10086';
 
@@ -15,4 +15,8 @@ export async function searchMemes(ctx: Context, keyword: string): Promise<Res<se
         url: `${BACK_END_URL}/machine/pageSearch`,
         data: payload,
     });
+}
+
+export async function getRandomMeme(ctx: Context): Promise<Res<RandomMeme>> {
+    return await get(ctx, `${BACK_END_URL}/machine/getRandOne`);
 }
