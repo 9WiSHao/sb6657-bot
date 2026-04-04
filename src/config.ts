@@ -18,5 +18,5 @@ export const Config: Schema<Config> = Schema.object({
         })
     )
         .default([])
-        .description('VIP 用户的自定义次数白名单（可在右侧添加多条）'),
+        .description('VIP 用户的自定义次数白名单（可添加多条）'),
 });
